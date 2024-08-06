@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Depreciation Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="depreciationCalculator.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Seal_of_Los_Angeles.svg" alt="Logo" class="header-logo">City Controller's Playground</h1>
+    <h2>Asset S.L. Depreciation Calculator</h2>
+    <form onsubmit="handleSubmit(event)">
+        <label for="acquisitionCost">Acquisition Cost</label>
+        <input type="number" id="acquisitionCost" name="acquisitionCost" step="0.01" required><br><br>
+
+        <label for="usefulLife">Useful Life</label>
+        <input type="number" id="usefulLife" name="usefulLife" step="0" required><br><br>
+
+        <label for="depreciationEffectiveDate">Depreciation Effective Date</label>
+        <input type="date" id="depreciationEffectiveDate" name="depreciationEffectiveDate" required><br><br>
+
+        <label for="depreciatedToFiscalYear">Depreciated to Fiscal Year (YYYY)</label>
+        <input type="number" id="depreciatedToFiscalYear" name="depreciatedToFiscalYear" required><br><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+
+    <div class="hidden results-panel" id="results">
+        <h3>Results</h3>
+        <p>Current Year Depreciated Amount: $<span id="currentYearDeprecAmount"></span></p>
+        <p>Total Depreciated Amount: $<span id="totalDeprecAmount"></span></p>
+        <p>Current Value: $<span id="currentValue"></span></p>
+        <p>CY Depreciated Months: <span id="currentYearDeprecMonths"></span></p>
+        <p>Total Depreciated Months: <span id="totalDepreciatedMonths"></span></p>
+    </div>
+    
+</body>
+</html>
