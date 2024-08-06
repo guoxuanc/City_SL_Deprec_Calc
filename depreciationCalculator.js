@@ -5,8 +5,6 @@ function calculateDepreciation(acquisitionCost, usefulLife, depreciationEffectiv
   // Create the end date for the fiscal year up to which depreciation is calculated
   const depreciatedToDate = new Date(depreciatedToFiscalYear, 5, 30); // Month is 0-indexed in JavaScript
 
-  /* @TODO: consider when asset retired/missing with a retired date, calculate to retired date */
-
   // Calculate monthly depreciated amount
   const monthlyDeprecAmount = acquisitionCost / (usefulLife * 12);
 
