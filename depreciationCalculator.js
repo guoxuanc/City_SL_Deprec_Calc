@@ -34,7 +34,7 @@ function calculateDepreciation(acquisitionCost, usefulLife, depreciationEffectiv
       // Total depreciated months cannot exceed maximum depreciable months
       totalDepreciatedMonths = maxDepreciatedMonths;
     } else {
-      // Asset has book value left to depreciate
+      // Asset has book value left to depreciate and it can depreciated up to 12 months only for a fiscal year
       currentYearDeprecMonths = Math.min(12, totalDepreciatedMonths);
     }
   
