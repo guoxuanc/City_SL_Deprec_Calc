@@ -23,10 +23,12 @@ function calculateDepreciation(acquisitionCost, usefulLife, depreciationEffectiv
     // Determine current fiscal year depreciated months
     let currentYearDeprecMonths;
     if (totalDepreciatedMonths > maxDepreciatedMonths) {
-      // Asset fully depreciated
+      // Consider when the asset was fully depreciated
       if (totalDepreciatedMonths - maxDepreciatedMonths < 12) {
+        // asset fully depreciated during depreciated_to_fiscal_year
         currentYearDeprecMonths = 12 - (totalDepreciatedMonths - maxDepreciatedMonths)
       } else {
+        // asset fully depreciated before depreciated_to_fiscal_year
         currentYearDeprecMonths = 0;
       }
       // Total depreciated months cannot exceed maximum depreciable months
