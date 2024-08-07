@@ -9,7 +9,27 @@ function calculateDepreciation(acquisitionCost, usefulLife, depreciationEffectiv
   const monthlyDeprecAmount = acquisitionCost / (usefulLife * 12);
 
   // Maximum depreciable months for the asset to depreciate
-  const maxDepreciatedMonths = usefulLife * 12;
+  let maxDepreciatedMonths = usefulLife * 12;
+  
+  // Check if retired date is provided and adjust depreciatedToDate accordingly
+    if (retiredDate !== "") {
+    	// # Reconsider maximum depreciable months if an retired_date exist
+      const retiredDateObj = new Date(retiredDate + 'T00:00:00');
+      // Calculate total months from depreciation start to retired date
+      let totalMonthsTillRetire = (retiredDateObj.getFullYear() - depreciationEffectiveDateObj.getFullYear()) * 12 +
+      retiredDateObj.getMonth() - depreciationEffectiveDateObj.getMonth() + 1;
+      // retire date should not predate depreciation effective date, do not handle if it happens
+      if (retiredDateObj <= depreciationEffectiveDateObj){
+      	// @TODO proper error handling required
+        totalMonthsTillRetire = 0;
+      }
+        
+      if (maxDepreciatedMonths > totalMonthsTillRetire){
+      	// asset would retire before being fully depreciated
+        maxDepreciatedMonths = totalMonthsTillRetire;
+      }
+    }
+
 
   // Number of depreciated months since depreciation effective date
   let totalDepreciatedMonths;
